@@ -1,0 +1,40 @@
+from flask import Flask, request, jsonify
+import joblib
+import os
+
+app = Flask(__name__)
+
+# Load all the models
+models = {}
+models_folder = "best_models"
+for filename in os.listdir(models_folder):
+    if filename.endswith(".pkl"):
+        kit_item = filename.split(".")[0]
+        model_path = os.path.join(models_folder, filename)
+        models[kit_item] = joblib.load(model_path)
+        print(f"Loaded model for kit item: {kit_item}")
+
+@app.route('/forecast', methods=['POST'])
+def forecast():
+    data = request.json
+    kit_item = data.get('kit_item')
+    months = data.get('months')
+
+    print(f"Requested kit item: {kit_item}")
+    print(f"Number of months: {months}")
+
+    if kit_item not in models:
+        print("Kit item not found")
+        return jsonify({"error": "Kit item not found"}), 400
+
+    model = models[kit_item]
+    try:
+        forecasted_data = model.forecast(months)
+        return jsonify({"forecast": forecasted_data.tolist()}), 200
+    except Exception as e:
+        print("Error:", e)
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
