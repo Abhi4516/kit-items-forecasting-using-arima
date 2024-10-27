@@ -40,7 +40,6 @@ The proposed system utilizes ARIMA (AutoRegressive Integrated Moving Average) to
 * **Exploratory Data Analysis** : Includes EDA to identify patterns and insights in the data.
 * **Model Evaluation** : Evaluates the ARIMA models performance using MAPE scores.
 
-
 ## Dataset
 
 * The dataset consists of 107 feature columns, including 106 columns representing the number of kit items and 1 column for dates.
@@ -60,3 +59,7 @@ The proposed system utilizes ARIMA (AutoRegressive Integrated Moving Average) to
 
 * Advancements in AI and machine learning algorithms can enhance forecasting accuracy.
 * Implementing IoT devices for real-time inventory data can improve proactive inventory management.
+
+### Results
+
+![1730018199384](image/readme/1730018199384.png)
