@@ -60,6 +60,6 @@ The proposed system utilizes ARIMA (AutoRegressive Integrated Moving Average) to
 * Advancements in AI and machine learning algorithms can enhance forecasting accuracy.
 * Implementing IoT devices for real-time inventory data can improve proactive inventory management.
 
-### Results
+### Output
 
 ![1730018199384](image/readme/1730018199384.png)
